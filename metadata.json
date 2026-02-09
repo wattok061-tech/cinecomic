@@ -1,0 +1,5 @@
+{
+  "name": "CineComic AI",
+  "description": "Transform your video clips into professional-grade comic book panels using advanced generative AI. Upload a video, choose your art style, and let Gemini analyze the action and redraw the scenes as a stunning graphic novel.",
+  "requestFramePermissions": []
+}
