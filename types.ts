@@ -50,4 +50,6 @@ export interface ComicState {
   panels: ComicPanelData[];
   status: 'idle' | 'analyzing' | 'generating_panels' | 'completed' | 'error';
   error: string | null;
+  comicTitle?: string;
+  characterDescription?: string;
 }

@@ -14,7 +14,6 @@
       --ink-base: #0a0a0b;
       --crimson-noir: #be123c;
       --lux-gold: #fbbf24;
-      --royal-indigo: #312e81;
       --paper-cream: #fcfcf7;
     }
 
@@ -53,40 +52,9 @@
       clip-path: polygon(1% 1%, 99% 2%, 100% 98%, 2% 99%);
     }
 
-    @media (min-width: 768px) {
-      .comic-bubble {
-        border-width: 4px;
-        border-radius: 20px;
-        padding: 14px 20px;
-        box-shadow: 8px 8px 0px var(--crimson-noir);
-      }
-      .comic-font {
-        letter-spacing: 0.05em;
-      }
-    }
-
     .halftone {
       background-image: radial-gradient(rgba(251, 191, 36, 0.1) 15%, transparent 15%);
       background-size: 8px 8px;
-    }
-
-    .speed-lines {
-      background: repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.02),
-        rgba(255, 255, 255, 0.02) 2px,
-        transparent 2px,
-        transparent 10px
-      );
-    }
-
-    .benday-dots {
-      background-image: radial-gradient(#000 10%, transparent 10%);
-      background-size: 4px 4px;
-    }
-
-    .skew-panel {
-      transform: skew(-2deg);
     }
 
     .wipe-container {
@@ -100,67 +68,45 @@
     }
 
     .wipe-bar {
-      height: 50vh;
-      width: 250%;
+      height: 50.5vh;
+      width: 100%;
       background: #000;
       position: absolute;
-      transform: translateX(-100%) skewX(-20deg);
-      transition: none;
+      transform: translateX(-100%);
+      will-change: transform;
     }
 
-    .wipe-bar-top { top: 0; border-bottom: 6px solid var(--lux-gold); }
-    .wipe-bar-bottom { bottom: 0; border-top: 6px solid var(--crimson-noir); }
+    .wipe-bar-top { top: 0; border-bottom: 4px solid var(--lux-gold); }
+    .wipe-bar-bottom { bottom: 0; border-top: 4px solid var(--crimson-noir); }
 
-    .wipe-active .wipe-bar-top { animation: wipeTop 0.8s cubic-bezier(0.8, 0, 0.2, 1) forwards; }
-    .wipe-active .wipe-bar-bottom { animation: wipeBottom 0.8s cubic-bezier(0.8, 0, 0.2, 1) forwards; }
-
-    @keyframes wipeTop {
-      0% { transform: translateX(-100%) skewX(-20deg); }
-      40%, 60% { transform: translateX(-20%) skewX(-20deg); }
-      100% { transform: translateX(100%) skewX(-20deg); }
+    .wipe-active .wipe-bar-top,
+    .wipe-active .wipe-bar-bottom { 
+      animation: wipeMove 0.8s cubic-bezier(0.7, 0, 0.3, 1) forwards; 
     }
 
-    @keyframes wipeBottom {
-      0% { transform: translateX(100%) skewX(-20deg); }
-      40%, 60% { transform: translateX(20%) skewX(-20deg); }
-      100% { transform: translateX(-100%) skewX(-20deg); }
+    @keyframes wipeMove {
+      0% { transform: translateX(-100%); }
+      40%, 60% { transform: translateX(0%); }
+      100% { transform: translateX(100%); }
     }
 
     .view-fade-in {
-      animation: viewFadeIn 0.6s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+      animation: viewFadeIn 0.5s ease-out forwards;
     }
 
     @keyframes viewFadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .perspective-2000 { perspective: 2000px; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--ink-base); }
     ::-webkit-scrollbar-thumb {
       background: var(--crimson-noir);
-      border: 2px solid var(--ink-base);
       border-radius: 10px;
-    }
-    
-    .text-outline {
-      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    }
-
-    @media (min-width: 768px) {
-      .text-outline {
-        text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
-      }
-    }
-    
-    /* Responsive font resizing */
-    html {
-      font-size: 14px;
-    }
-    @media (min-width: 640px) {
-      html { font-size: 16px; }
     }
   </style>
   <script type="importmap">
